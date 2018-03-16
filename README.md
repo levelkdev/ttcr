@@ -11,6 +11,7 @@ TCP Project for the MIT Bitcoin Hackathon 2018
 In the dev console: Note inside the development console we don't preface commands with truffle.
 
 `compile` - Compile the smart contract
+
 `migrate` - Migrate the smart contract
 
 Outside the dev console: 
@@ -24,6 +25,7 @@ Run the webpack server for front-end hot reloading (outside the development cons
 Truffle can run tests written in Solidity or JavaScript against your smart contracts. Note the command varies slightly if you're in or outside of the development console.
 
 `test` - If inside the development console.
+
 `truffle test` - If outside the development console
 
 Jest is included for testing React components. Compile your contracts before running Jest, or you may receive some file not found errors
