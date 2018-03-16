@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Registry from '../build/contracts/Registry.json'
 import getWeb3 from './utils/getWeb3'
 
+import './css/home.css'
 import './css/oswald.css'
 import './css/open-sans.css'
 import './css/pure-min.css'
@@ -70,10 +71,28 @@ class App extends Component {
         </nav>
 
         <main className="container">
+      
           <div className="pure-g">
             <div className="pure-u-1-1">
               <h1>Transparency TCR</h1>
               <p>The name of this tcr is: {this.state.storageValue}</p>
+            </div>
+          </div>
+          
+          <div className="home">
+            <div className="header">Transparency TCR List page</div>
+            <div className="list">
+              <hr/>
+              <li>Entry1</li>
+              <hr/>
+              <li>Entry2</li>
+              <hr/>
+              <li>Entry3</li>
+              <hr/>
+              <li>Entry4</li>
+            </div>
+            <div className="header">
+              <button >VOTE PAGE</button>
             </div>
           </div>
         </main>
