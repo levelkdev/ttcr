@@ -8,10 +8,10 @@ TCP Project for the MIT Bitcoin Hackathon 2018
 
 `truffle develop` - Run the development console
 
-In the dev console: Compile and migrate the smart contracts. Note inside the development console we don't preface commands with truffle.
+In the dev console: Note inside the development console we don't preface commands with truffle.
 
-`compile` 
-`migrate` 
+`compile` - Compile the smart contract
+`migrate` - Migrate the smart contract
 
 Outside the dev console: 
 
