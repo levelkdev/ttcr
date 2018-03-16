@@ -1,0 +1,50 @@
+.container {
+  //background: linear-gradient(to bottom right, #2e3141 50%, orange);
+  background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+  //background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+  padding: 20px;
+  text-align: center;
+  color: white;
+  margin: -10px;
+  height: 1000px;
+  font-family: Arial;
+}
+
+.header {
+  margin: 50px;
+  font-size: 24px;	
+  text-align: center;
+  color: #ECEFF1;
+}
+
+.list {
+	margin: 30px;
+}
+
+li {
+    padding: 10px;
+    list-style-type : none;
+}
+
+button {
+	color: #ECEFF1;
+	border-color: #ECEFF1;
+	overflow: hidden;
+	padding: 10px;
+	transition: border-color 0.3s, background-color 0.3s;
+	transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+	border: 3px solid;
+	border-radius: 40px;
+	font-weight: 600;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	font-size: 14px;
+	min-width: 150px;
+	max-width: 250px;
+	display: block;
+	margin: 1em;
+	background: none;
+	vertical-align: middle;
+	position: relative;
+	z-index: 1;
+}
