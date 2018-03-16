@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
+import Registry from '../build/contracts/Registry.json'
 import getWeb3 from './utils/getWeb3'
 
 import './css/home.css'
@@ -45,25 +45,20 @@ class App extends Component {
      */
 
     const contract = require('truffle-contract')
-    const simpleStorage = contract(SimpleStorageContract)
-    simpleStorage.setProvider(this.state.web3.currentProvider)
+    const registry = contract(Registry)
+    registry.setProvider(this.state.web3.currentProvider)
 
     // Declaring this for later so we can chain functions on SimpleStorage.
-    var simpleStorageInstance
+    var registryInstance
 
     // Get accounts.
     this.state.web3.eth.getAccounts((error, accounts) => {
-      simpleStorage.deployed().then((instance) => {
-        simpleStorageInstance = instance
-
-        // Stores a given value, 5 by default.
-        return simpleStorageInstance.set(5, {from: accounts[0]})
-      }).then((result) => {
-        // Get the value from the contract to prove it worked.
-        return simpleStorageInstance.get.call(accounts[0])
+      registry.deployed().then((instance) => {
+        registryInstance = instance
+        return registryInstance.name.call()
       }).then((result) => {
         // Update state with the result.
-        return this.setState({ storageValue: result.c[0] })
+        return this.setState({ storageValue: result })
       })
     })
   }
@@ -76,6 +71,13 @@ class App extends Component {
         </nav>
 
         <main className="container">
+      
+          <div className="pure-g">
+            <div className="pure-u-1-1">
+              <h1>Transparency TCR</h1>
+              <p>The name of this tcr is: {this.state.storageValue}</p>
+            </div>
+          </div>
           
           <div className="home">
             <div className="header">Transparency TCR List page</div>
@@ -92,7 +94,6 @@ class App extends Component {
             <div className="header">
               <button >VOTE PAGE</button>
             </div>
-
           </div>
         </main>
       </div>

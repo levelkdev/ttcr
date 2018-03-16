@@ -51,12 +51,16 @@
   "dependencies": {
     "dotenv": "^2.0.0",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "truffle-hdwallet-provider": "0.0.3"
   },
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "deploy": "NODE_ENV=development truffle migrate --network local",
+    "deploy-rinkeby": "truffle migrate --network rinkeby",
+    "deploy-mainnet": "truffle migrate --network mainnet"
   },
   "jest": {
     "collectCoverageFrom": [
