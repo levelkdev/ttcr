@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Registry from '../build/contracts/Registry.json'
+import Token from '../build/contracts/EIP20.json'
 import getWeb3 from './utils/getWeb3'
+import contract from 'truffle-contract'
 
 import './css/home.css'
 import './css/oswald.css'
@@ -9,6 +11,7 @@ import './css/pure-min.css'
 import './App.css'
 
 class App extends Component {
+
   constructor(props) {
     super(props)
 
@@ -39,23 +42,12 @@ class App extends Component {
   }
 
   instantiateContract() {
-    /*
-     * SMART CONTRACT EXAMPLE
-     *
-     * Normally these functions would be called in the context of a
-     * state management library, but for convenience I've placed them here.
-     */
-
-    const contract = require('truffle-contract')
-    const registry = contract(Registry)
-    registry.setProvider(this.state.web3.currentProvider)
-
     // Declaring this for later so we can chain functions on SimpleStorage.
     var registryInstance
 
     // Get accounts.
     this.state.web3.eth.getAccounts((error, accounts) => {
-      registry.deployed().then((instance) => {
+      this.getRegistry().then((instance) => {
         registryInstance = instance
         return registryInstance.name.call()
       }).then((result) => {
@@ -74,6 +66,35 @@ class App extends Component {
     console.log('state of', this.state.approved);
   }
 
+  approveTransfer() {
+    var registryInstance
+    var tokenInstance
+    this.state.web3.eth.getAccounts((error, accounts) => {
+      this.getRegistry().then((instance) => {
+        registryInstance = instance
+        return this.getToken()
+      }).then((instance) => {
+        tokenInstance = instance
+        return tokenInstance.approve(registryInstance.address, 10, {from: accounts[0]})
+      }).then((response) => {
+        console.log(response)
+      }).catch((error) => {
+        console.log(error)
+      })
+    })
+  }
+
+  getToken() {
+    const token = contract(Token)
+    token.setProvider(this.state.web3.currentProvider)
+    return token.deployed()
+  }
+
+  getRegistry() {
+    const registry = contract(Registry)
+    registry.setProvider(this.state.web3.currentProvider)
+    return registry.deployed()
+  }
 
   render() {
     return (
@@ -83,13 +104,13 @@ class App extends Component {
         </nav>
 
         <main className="container">
-      
+
           <div className="pure-g">
             <div className="pure-u-1-1">
               <h1>Transparency TCR</h1>
               <p>The name of this tcr is: {this.state.storageValue}</p>
             </div>
-          </div>  
+          </div>
 
           {!this.state.votingButtonPressed && (
             <div className="home">
@@ -117,11 +138,9 @@ class App extends Component {
                 </form>
               </div>
               <div className="header">
-                <button className="voting" onClick={() => this.handleButtonClick(true)}>VOTING PAGE</button>
+                <button className="voting" onClick={() => this.handleButtonClick(true)}>VOTE PAGE</button>
               </div> 
-
-            </div>   
-              
+            </div>
           )}
 
           {this.state.votingButtonPressed && (
@@ -171,7 +190,7 @@ class App extends Component {
               <h5>This criteria requires that a hackathon team..</h5>
               <div className="header">
                 <button className="voting" onClick={() => this.handleButtonClick(false)}>GO BACK</button>
-              </div>     
+              </div>
             </div>
           )}
 
