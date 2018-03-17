@@ -5,7 +5,7 @@ import getWeb3 from './utils/getWeb3'
 import contract from 'truffle-contract'
 
 import './css/home.css'
-import './css/oswald.css'
+
 import './css/open-sans.css'
 import './css/pure-min.css'
 import './App.css'
@@ -151,7 +151,7 @@ this.handleChange = this.handleChange.bind(this);
 
           <div className="pure-g">
             <div className="pure-u-1-1">
-              <h1>Transparency TCR</h1>
+              <div className="header">Transparency TCR</div>
               <p>The name of this tcr is: {this.state.storageValue}</p>
             </div>
           </div>
