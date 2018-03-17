@@ -20,7 +20,7 @@ this.handleChange = this.handleChange.bind(this);
       web3: null,
       votingButtonPressed: false,
       approved: false,
-      listings: ["one", "two"],
+      listings: [],
       value: "",
     }
   }
