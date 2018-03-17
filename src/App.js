@@ -67,19 +67,31 @@ this.handleChange = this.handleChange.bind(this);
 
   listings () {
     var registryInstance
-    var tokenInstance
     this.state.web3.eth.getAccounts((error, accounts) => {
       this.getRegistry().then((instance) => {
         registryInstance = instance
         return registryInstance.getListingsArray()
       }).then((listings) => {
-        this.setState({"listings": listings.map(window.web3.toAscii)})
-        console.log(listings)
+        return Promise.all(listings.map(entry => this.getEntry(registryInstance, entry)))
+      }).then((listings) => {
+        console.log("set state " + listings)
+        this.setState({listings: listings})
       }).catch((error) => {
         console.log(error)
       })
     })
   }
+
+  getEntry(registryInstance, entry) {
+    return registryInstance.listings(name).then((listing) => {
+      console.log(listing)
+      return {
+        name: window.web3.toAscii(entry),
+        whitelisted: listing[1]
+      }
+    })
+  }
+
   approve(value) {
     this.approveTransfer()
   }
@@ -138,9 +150,8 @@ this.handleChange = this.handleChange.bind(this);
 
   render() {
     const listItems = this.state.listings.map((entry) =>
-  <li key={entry}>{entry}</li>
-);
-    console.log(this.state.listings)
+      <li key={entry.name}>{entry.name} {entry.whitelisted ? "whitelisted" : "not whitelisted"}</li>
+    );
     return (
       <div className="App">
         <nav className="navbar pure-menu pure-menu-horizontal">
