@@ -53,6 +53,7 @@ contract Registry {
 
     // Maps listingHashes to associated listingHash data
     mapping(bytes32 => Listing) public listings;
+    bytes32[] listingsArray;
 
     // Global Variables
     EIP20 public token;
@@ -113,6 +114,7 @@ contract Registry {
 
         // Sets owner
         Listing storage listing = listings[_listingHash];
+        listingsArray.push(_listingHash);
         listing.owner = msg.sender;
 
         // Transfers tokens from user to Registry contract
@@ -123,6 +125,10 @@ contract Registry {
         listing.unstakedDeposit = _amount;
 
         _Application(_listingHash, _amount, _data);
+    }
+
+    function getListingsArray() external view returns (bytes32[]){
+      return listingsArray;
     }
 
     /**

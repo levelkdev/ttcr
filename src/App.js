@@ -20,6 +20,7 @@ this.handleChange = this.handleChange.bind(this);
       web3: null,
       votingButtonPressed: false,
       approved: false,
+      listings: ["one", "two"],
       value: "",
     }
   }
@@ -36,6 +37,7 @@ this.handleChange = this.handleChange.bind(this);
 
       // Instantiate contract once web3 provided.
       this.instantiateContract()
+      this.listings()
     })
 
     .catch(() => {
@@ -63,6 +65,21 @@ this.handleChange = this.handleChange.bind(this);
     this.setState({votingButtonPressed: value})
   }
 
+  listings () {
+    var registryInstance
+    var tokenInstance
+    this.state.web3.eth.getAccounts((error, accounts) => {
+      this.getRegistry().then((instance) => {
+        registryInstance = instance
+        return registryInstance.getListingsArray()
+      }).then((listings) => {
+        this.setState({"listings": listings.map(window.web3.toAscii)})
+        console.log(listings)
+      }).catch((error) => {
+        console.log(error)
+      })
+    })
+  }
   approve(value) {
     this.approveTransfer()
   }
@@ -120,6 +137,10 @@ this.handleChange = this.handleChange.bind(this);
   }
 
   render() {
+    const listItems = this.state.listings.map((number) =>
+  <li>{number}</li>
+);
+    console.log(this.state.listings)
     return (
       <div className="App">
         <nav className="navbar pure-menu pure-menu-horizontal">
@@ -140,13 +161,7 @@ this.handleChange = this.handleChange.bind(this);
               <div className="header">Transparency TCR List page</div>
               <div className="list">
                 <hr/>
-                <li>Entry1</li>
-                <hr/>
-                <li>Entry2</li>
-                <hr/>
-                <li>Entry3</li>
-                <hr/>
-                <li>Entry4</li>
+                {listItems}
               </div>
               <hr/>
               <div>
