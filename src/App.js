@@ -26,7 +26,7 @@ class App extends Component {
     getWeb3
     .then(results => {
       this.setState({
-        web3: results.web3,
+        web3: results.web3
       })
 
       // Instantiate contract once web3 provided.
@@ -98,7 +98,7 @@ class App extends Component {
                 <li>Entry4</li>
               </div>
               <div className="header">
-                <button onClick={() => this.handleButtonClick(true)}>VOTE PAGE</button>
+                <button className="voting" onClick={() => this.handleButtonClick(true)}>VOTE PAGE</button>
               </div> 
             </div>   
               
@@ -143,7 +143,7 @@ class App extends Component {
                   </ul>
                 </div>
               <div className="header">
-                <button onClick={() => this.handleButtonClick(false)}>GO BACK</button>
+                <button className="voting" onClick={() => this.handleButtonClick(false)}>GO BACK</button>
               </div>     
             </div>
           )}
