@@ -15,7 +15,8 @@ class App extends Component {
     this.state = {
       storageValue: 0,
       web3: null,
-      votingButtonPressed: false
+      votingButtonPressed: false, 
+      approved: false
     }
   }
 
@@ -68,6 +69,11 @@ class App extends Component {
     this.setState({votingButtonPressed: value})
   }
 
+  approve(value) {
+    this.setState({approved: value})
+  }
+
+
   render() {
     return (
       <div className="App">
@@ -102,7 +108,7 @@ class App extends Component {
                   <label>Name: </label>
                   <div><input className="voting" type="text" name="name" /></div>
                   <div>
-                    <button className="voting">APPROVE</button>
+                    <button onClick={() => this.approve(true)} className={"voting " + (this.state.approved === true ? 'active' : '')}>APPROVE</button>
                     <button className="voting">APPLY</button>
                   </div>
                 </form>
