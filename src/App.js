@@ -80,7 +80,9 @@ class App extends Component {
           </div>
           
           <div className="home">
-            <div className="header">Transparency TCR List page</div>
+            <div className="header">
+              Transparency TCR List page
+            </div>
             <div className="list">
               <hr/>
               <li>Entry1</li>
@@ -92,8 +94,25 @@ class App extends Component {
               <li>Entry4</li>
             </div>
             <div className="header">
-              <button >VOTE PAGE</button>
+              TCR List Applications
             </div>
+            <ul>
+              <li>
+                Application 1
+                <button className="voting">Accept</button>
+                <button className="voting">Reject</button>
+              </li>
+              <li>
+                Application 2
+                <button className="voting">Accept</button>
+                <button className="voting">Reject</button>
+              </li>
+              <li>
+                Application 3
+                <button className="voting">Accept</button>
+                <button className="voting">Reject</button>
+              </li>
+            </ul>
           </div>
         </main>
       </div>
