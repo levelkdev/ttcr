@@ -6,7 +6,7 @@
   text-align: center;
   color: white;
   margin: -10px;
-  height: 1500px;
+  height: 2000px;
   font-family: Arial;
 }
 
@@ -19,16 +19,30 @@
   justify-content: center;
 }
 
-.list {
-	margin: 30px;
+.underline {
+	text-decoration: underline;
 }
 
+
+.list {
+	margin: 30px;
+	padding-bottom: 50px;
+}
+
+.input {
+	border-radius: 40px;
+	margin-bottom: 40px;
+}
 li {
     padding: 10px;
     list-style-type : none;
 }
 nav.pure-menu {
 	padding-top: 15px;
+}
+
+.active {
+	background: yellow;
 }
 
 button.voting {
