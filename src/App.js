@@ -18,7 +18,7 @@ class App extends Component {
     this.state = {
       storageValue: 0,
       web3: null,
-      votingButtonPressed: false, 
+      votingButtonPressed: false,
       approved: false
     }
   }
@@ -62,8 +62,7 @@ class App extends Component {
   }
 
   approve(value) {
-    this.setState({approved: value})
-    console.log('state of', this.state.approved);
+    this.approveTransfer()
   }
 
   approveTransfer() {
@@ -146,14 +145,14 @@ class App extends Component {
                   <label>Name: </label>
                   <input className="input" type="text" name="name" />
                   <div>
-                    <button onClick={() => this.approve(true)} className={(this.state.approved === true ? 'active voting' : 'voting')}>APPROVE</button>
-                    <button className="voting">APPLY</button>
+                    <button onClick={(e) => {this.approve(true), e.preventDefault()}} className={(this.state.approved === true ? 'active voting' : 'voting')}>APPROVE</button>
+                    <button onClick={(e) => {this.applyNewEntry(), e.preventDefault()}} className="voting">APPLY</button>
                   </div>
                 </form>
               </div>
               <div className="header">
                 <button className="voting" onClick={() => this.handleButtonClick(true)}>VOTE PAGE</button>
-              </div> 
+              </div>
             </div>
           )}
 
