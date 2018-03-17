@@ -103,18 +103,20 @@ class App extends Component {
                 <hr/>
                 <li>Entry4</li>
               </div>
-              <div className="header">APPLICATION FORM</div>
+              <hr/>
+              <div>
+                <div className="header">APPLICATION FORM</div>
                 <form>
                   <label>Name: </label>
-                  <div><input className="voting" type="text" name="name" /></div>
+                  <input className="input" type="text" name="name" />
                   <div>
                     <button onClick={() => this.approve(true)} className={"voting " + (this.state.approved === true ? 'active' : '')}>APPROVE</button>
                     <button className="voting">APPLY</button>
                   </div>
                 </form>
-               
+              </div>
               <div className="header">
-                <button className="voting" onClick={() => this.handleClick(true)}>VOTING PAGE</button>
+                <button className="voting" onClick={() => this.handleButtonClick(true)}>VOTING PAGE</button>
               </div> 
 
             </div>   
