@@ -14,12 +14,13 @@ class App extends Component {
 
   constructor(props) {
     super(props)
-
+this.handleChange = this.handleChange.bind(this);
     this.state = {
       storageValue: 0,
       web3: null,
       votingButtonPressed: false,
-      approved: false
+      approved: false,
+      value: "",
     }
   }
 
@@ -36,6 +37,7 @@ class App extends Component {
       // Instantiate contract once web3 provided.
       this.instantiateContract()
     })
+
     .catch(() => {
       console.log('Error finding web3.')
     })
@@ -88,7 +90,8 @@ class App extends Component {
     this.state.web3.eth.getAccounts((error, accounts) => {
       this.getRegistry().then((instance) => {
         registryInstance = instance
-        return registryInstance.apply("0x1234", 10, "Some string", {from: accounts[0]})
+        console.log("State:" + this.state.value)
+        return registryInstance.apply(this.state.value, 10, "Some string", {from: accounts[0]})
       }).then((response) => {
         console.log(response)
       }).catch((error) => {
@@ -102,6 +105,13 @@ class App extends Component {
     token.setProvider(this.state.web3.currentProvider)
     return token.deployed()
   }
+
+  handleChange(event) {
+
+    this.setState({value: event.target.value});
+
+  }
+
 
   getRegistry() {
     const registry = contract(Registry)
@@ -142,8 +152,8 @@ class App extends Component {
               <div>
                 <div className="header">APPLICATION FORM</div>
                 <form>
-                  <label>Name: </label>
-                  <input className="input" type="text" name="name" />
+                  <label>Name:</label>
+                  <input className="input" type="text" name="name" value={this.state.value} onChange={this.handleChange} />
                   <div>
                     <button onClick={(e) => {this.approve(true), e.preventDefault()}} className={(this.state.approved === true ? 'active voting' : 'voting')}>APPROVE</button>
                     <button onClick={(e) => {this.applyNewEntry(), e.preventDefault()}} className="voting">APPLY</button>
