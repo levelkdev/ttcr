@@ -27,6 +27,9 @@ li {
     padding: 10px;
     list-style-type : none;
 }
+nav.pure-menu {
+	padding-top: 15px;
+}
 
 button {
 	color: #ECEFF1;

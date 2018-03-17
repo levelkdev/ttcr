@@ -14,7 +14,8 @@ class App extends Component {
 
     this.state = {
       storageValue: 0,
-      web3: null
+      web3: null,
+      votingButtonPressed: false
     }
   }
 
@@ -25,7 +26,7 @@ class App extends Component {
     getWeb3
     .then(results => {
       this.setState({
-        web3: results.web3
+        web3: results.web3,
       })
 
       // Instantiate contract once web3 provided.
@@ -63,11 +64,15 @@ class App extends Component {
     })
   }
 
+  handleButtonClick(value) {
+    this.setState({votingButtonPressed: value})
+  }
+
   render() {
     return (
       <div className="App">
         <nav className="navbar pure-menu pure-menu-horizontal">
-            <a href="#" className="pure-menu-heading pure-menu-link">Truffle Box</a>
+            <a href="#" className="pure-menu-heading pure-menu-link">MIT Bitcoin Hackathon</a>
         </nav>
 
         <main className="container">
@@ -76,25 +81,39 @@ class App extends Component {
             <div className="pure-u-1-1">
               <h1>Transparency TCR</h1>
               <p>The name of this tcr is: {this.state.storageValue}</p>
+
             </div>
-          </div>
-          
-          <div className="home">
-            <div className="header">Transparency TCR List page</div>
-            <div className="list">
-              <hr/>
-              <li>Entry1</li>
-              <hr/>
-              <li>Entry2</li>
-              <hr/>
-              <li>Entry3</li>
-              <hr/>
-              <li>Entry4</li>
+          </div>  
+
+          {!this.state.votingButtonPressed && (
+            <div className="home">
+              <div className="header">Transparency TCR List page</div>
+              <div className="list">
+                <hr/>
+                <li>Entry1</li>
+                <hr/>
+                <li>Entry2</li>
+                <hr/>
+                <li>Entry3</li>
+                <hr/>
+                <li>Entry4</li>
+              </div>
+              <div className="header">
+                <button onClick={() => this.handleButtonClick(true)}>VOTE PAGE</button>
+              </div> 
+            </div>   
+              
+          )}
+
+          {this.state.votingButtonPressed && (
+            <div>
+              <p className="header">VOTING PAGE - STUFF HERE </p>
+              <div className="header">
+                <button onClick={() => this.handleButtonClick(false)}>GO BACK</button>
+              </div>     
             </div>
-            <div className="header">
-              <button >VOTE PAGE</button>
-            </div>
-          </div>
+          )}
+
         </main>
       </div>
     );
