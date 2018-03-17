@@ -14,7 +14,8 @@ class App extends Component {
 
     this.state = {
       storageValue: 0,
-      web3: null
+      web3: null,
+      votingButtonPressed: false
     }
   }
 
@@ -63,11 +64,15 @@ class App extends Component {
     })
   }
 
+  handleButtonClick(value) {
+    this.setState({votingButtonPressed: value})
+  }
+
   render() {
     return (
       <div className="App">
         <nav className="navbar pure-menu pure-menu-horizontal">
-            <a href="#" className="pure-menu-heading pure-menu-link">Truffle Box</a>
+            <a href="#" className="pure-menu-heading pure-menu-link">MIT Bitcoin Hackathon</a>
         </nav>
 
         <main className="container">
@@ -77,43 +82,72 @@ class App extends Component {
               <h1>Transparency TCR</h1>
               <p>The name of this tcr is: {this.state.storageValue}</p>
             </div>
-          </div>
-          
-          <div className="home">
-            <div className="header">
-              Transparency TCR List page
+          </div>  
+
+          {!this.state.votingButtonPressed && (
+            <div className="home">
+              <div className="header">Transparency TCR List page</div>
+              <div className="list">
+                <hr/>
+                <li>Entry1</li>
+                <hr/>
+                <li>Entry2</li>
+                <hr/>
+                <li>Entry3</li>
+                <hr/>
+                <li>Entry4</li>
+              </div>
+              <div className="header">
+                <button className="voting" onClick={() => this.handleButtonClick(true)}>VOTE PAGE</button>
+              </div> 
+            </div>   
+              
+          )}
+
+          {this.state.votingButtonPressed && (
+            <div>
+              <p className="header">VOTING PAGE - STUFF HERE </p>
+                <div className="home">
+                  <div className="header">
+                    Transparency TCR List page
+                  </div>
+                  <div className="list">
+                    <hr/>
+                    <li>Entry1</li>
+                    <hr/>
+                    <li>Entry2</li>
+                    <hr/>
+                    <li>Entry3</li>
+                    <hr/>
+                    <li>Entry4</li>
+                  </div>
+                  <div className="header">
+                    TCR List Applications
+                  </div>
+                  <ul>
+                    <li>
+                      Application 1
+                      <button className="voting">Accept</button>
+                      <button className="voting">Reject</button>
+                    </li>
+                    <li>
+                      Application 2
+                      <button className="voting">Accept</button>
+                      <button className="voting">Reject</button>
+                    </li>
+                    <li>
+                      Application 3
+                      <button className="voting">Accept</button>
+                      <button className="voting">Reject</button>
+                    </li>
+                  </ul>
+                </div>
+              <div className="header">
+                <button className="voting" onClick={() => this.handleButtonClick(false)}>GO BACK</button>
+              </div>     
             </div>
-            <div className="list">
-              <hr/>
-              <li>Entry1</li>
-              <hr/>
-              <li>Entry2</li>
-              <hr/>
-              <li>Entry3</li>
-              <hr/>
-              <li>Entry4</li>
-            </div>
-            <div className="header">
-              TCR List Applications
-            </div>
-            <ul>
-              <li>
-                Application 1
-                <button className="voting">Accept</button>
-                <button className="voting">Reject</button>
-              </li>
-              <li>
-                Application 2
-                <button className="voting">Accept</button>
-                <button className="voting">Reject</button>
-              </li>
-              <li>
-                Application 3
-                <button className="voting">Accept</button>
-                <button className="voting">Reject</button>
-              </li>
-            </ul>
-          </div>
+          )}
+
         </main>
       </div>
     );

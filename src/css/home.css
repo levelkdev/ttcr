@@ -6,7 +6,7 @@
   text-align: center;
   color: white;
   margin: -10px;
-  height: 1000px;
+  height: 1500px;
   font-family: Arial;
 }
 
@@ -26,6 +26,9 @@
 li {
     padding: 10px;
     list-style-type : none;
+}
+nav.pure-menu {
+	padding-top: 15px;
 }
 
 button.voting {
