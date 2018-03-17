@@ -137,8 +137,8 @@ this.handleChange = this.handleChange.bind(this);
   }
 
   render() {
-    const listItems = this.state.listings.map((number) =>
-  <li>{number}</li>
+    const listItems = this.state.listings.map((entry) =>
+  <li key={entry}>{entry}</li>
 );
     console.log(this.state.listings)
     return (
