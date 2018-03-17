@@ -84,6 +84,20 @@ class App extends Component {
     })
   }
 
+  applyNewEntry() {
+    var registryInstance
+    this.state.web3.eth.getAccounts((error, accounts) => {
+      this.getRegistry().then((instance) => {
+        registryInstance = instance
+        return registryInstance.apply("0x1234", 10, "Some string", {from: accounts[0]})
+      }).then((response) => {
+        console.log(response)
+      }).catch((error) => {
+        console.log(error)
+      })
+    })
+  }
+
   getToken() {
     const token = contract(Token)
     token.setProvider(this.state.web3.currentProvider)
