@@ -97,51 +97,69 @@ class App extends Component {
                 <hr/>
                 <li>Entry4</li>
               </div>
-              <div className="header">
-                <button className="voting" onClick={() => this.handleButtonClick(true)}>VOTE PAGE</button>
+              <div className="header">APPLICATION FORM</div>
+                <form>
+                  <label>Name: </label>
+                  <div><input className="voting" type="text" name="name" /></div>
+                  <div>
+                    <button className="voting">APPROVE</button>
+                    <button className="voting">APPLY</button>
+                  </div>
+                </form>
+               
+              <div className="header">APPLICATION FORM
+                <button className="voting" onClick={() => this.handleClick(true)}>APPLICATION FORM</button>
               </div> 
+
             </div>   
               
           )}
 
           {this.state.votingButtonPressed && (
             <div>
-              <p className="header">VOTING PAGE - STUFF HERE </p>
-                <div className="home">
-                  <div className="header">
-                    Transparency TCR List page
-                  </div>
-                  <div className="list">
-                    <hr/>
-                    <li>Entry1</li>
-                    <hr/>
-                    <li>Entry2</li>
-                    <hr/>
-                    <li>Entry3</li>
-                    <hr/>
-                    <li>Entry4</li>
-                  </div>
-                  <div className="header">
-                    TCR List Applications
-                  </div>
-                  <ul>
-                    <li>
-                      Application 1
-                      <button className="voting">Accept</button>
-                      <button className="voting">Reject</button>
-                    </li>
-                    <li>
-                      Application 2
-                      <button className="voting">Accept</button>
-                      <button className="voting">Reject</button>
-                    </li>
-                    <li>
-                      Application 3
-                      <button className="voting">Accept</button>
-                      <button className="voting">Reject</button>
-                    </li>
-                  </ul>
+              <p className="header">VOTING PAGE</p>
+              <div className="home">
+                <div className="header">
+                  Current TCR List:
                 </div>
+                <div className="list">
+                  <hr/>
+                  <li>Entry1</li>
+                  <hr/>
+                  <li>Entry2</li>
+                  <hr/>
+                  <li>Entry3</li>
+                  <hr/>
+                  <li>Entry4</li>
+                </div>
+                <div className="header underline">
+                  TCR List Applications
+                </div>
+                <ul>
+                  <li>
+                    Application 1
+                    <button className="voting">Accept</button>
+                    <button className="voting">Reject</button>
+                  </li>
+                  <li>
+                    Application 2
+                    <button className="voting">Accept</button>
+                    <button className="voting">Reject</button>
+                  </li>
+                  <li>
+                    Application 3
+                    <button className="voting">Accept</button>
+                    <button className="voting">Reject</button>
+                  </li>
+                </ul>
+              </div>
+              <div className="header underline">Criteria for Transparency:</div>
+              <h3>Criteria #1:</h3>
+              <h5>This criteria requires that a hackathon team..</h5>
+              <h3>Criteria #2:</h3>
+              <h5>This criteria requires that a hackathon team..</h5>
+              <h3>Criteria #3:</h3>
+              <h5>This criteria requires that a hackathon team..</h5>
               <div className="header">
                 <button className="voting" onClick={() => this.handleButtonClick(false)}>GO BACK</button>
               </div>     

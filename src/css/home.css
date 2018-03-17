@@ -6,7 +6,7 @@
   text-align: center;
   color: white;
   margin: -10px;
-  height: 1500px;
+  height: 2000px;
   font-family: Arial;
 }
 
@@ -17,6 +17,10 @@
   color: #ECEFF1;
   display: flex;
   justify-content: center;
+}
+
+.underline {
+	text-decoration: underline;
 }
 
 .list {
