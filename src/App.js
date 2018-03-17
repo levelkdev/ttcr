@@ -81,7 +81,6 @@ class App extends Component {
             <div className="pure-u-1-1">
               <h1>Transparency TCR</h1>
               <p>The name of this tcr is: {this.state.storageValue}</p>
-
             </div>
           </div>  
 
@@ -108,6 +107,41 @@ class App extends Component {
           {this.state.votingButtonPressed && (
             <div>
               <p className="header">VOTING PAGE - STUFF HERE </p>
+                <div className="home">
+                  <div className="header">
+                    Transparency TCR List page
+                  </div>
+                  <div className="list">
+                    <hr/>
+                    <li>Entry1</li>
+                    <hr/>
+                    <li>Entry2</li>
+                    <hr/>
+                    <li>Entry3</li>
+                    <hr/>
+                    <li>Entry4</li>
+                  </div>
+                  <div className="header">
+                    TCR List Applications
+                  </div>
+                  <ul>
+                    <li>
+                      Application 1
+                      <button className="voting">Accept</button>
+                      <button className="voting">Reject</button>
+                    </li>
+                    <li>
+                      Application 2
+                      <button className="voting">Accept</button>
+                      <button className="voting">Reject</button>
+                    </li>
+                    <li>
+                      Application 3
+                      <button className="voting">Accept</button>
+                      <button className="voting">Reject</button>
+                    </li>
+                  </ul>
+                </div>
               <div className="header">
                 <button onClick={() => this.handleButtonClick(false)}>GO BACK</button>
               </div>     

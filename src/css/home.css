@@ -31,7 +31,7 @@ nav.pure-menu {
 	padding-top: 15px;
 }
 
-button {
+button.voting {
 	color: #ECEFF1;
 	border-color: #ECEFF1;
 	overflow: hidden;
@@ -46,7 +46,7 @@ button {
 	font-size: 14px;
 	min-width: 150px;
 	max-width: 250px;
-	display: block;
+	display: inline;
 	margin: 1em;
 	background: none;
 	vertical-align: middle;
