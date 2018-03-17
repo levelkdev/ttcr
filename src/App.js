@@ -113,8 +113,8 @@ class App extends Component {
                   </div>
                 </form>
                
-              <div className="header">APPLICATION FORM
-                <button className="voting" onClick={() => this.handleClick(true)}>APPLICATION FORM</button>
+              <div className="header">
+                <button className="voting" onClick={() => this.handleClick(true)}>VOTING PAGE</button>
               </div> 
 
             </div>   
