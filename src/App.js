@@ -71,6 +71,7 @@ class App extends Component {
 
   approve(value) {
     this.setState({approved: value})
+    console.log('state of', this.state.approved);
   }
 
 
@@ -110,7 +111,7 @@ class App extends Component {
                   <label>Name: </label>
                   <input className="input" type="text" name="name" />
                   <div>
-                    <button onClick={() => this.approve(true)} className={"voting " + (this.state.approved === true ? 'active' : '')}>APPROVE</button>
+                    <button onClick={() => this.approve(true)} className={(this.state.approved === true ? 'active voting' : 'voting')}>APPROVE</button>
                     <button className="voting">APPLY</button>
                   </div>
                 </form>

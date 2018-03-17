@@ -23,13 +23,10 @@
 	text-decoration: underline;
 }
 
-.active {
-
-}
 
 .list {
 	margin: 30px;
-	padding-bottom: 50px
+	padding-bottom: 50px;
 }
 
 .input {
@@ -42,6 +39,10 @@ li {
 }
 nav.pure-menu {
 	padding-top: 15px;
+}
+
+.active {
+	background: yellow;
 }
 
 button.voting {
